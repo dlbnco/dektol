@@ -91,17 +91,24 @@ const wrapperStyle = generateCssVariables({ background, foreground })
     <slot />
     <style is:global>
       @font-face {
-        font-family: 'Redaction 20';
-        src: url('/fonts/Redaction_20-Regular.woff2') format('woff2');
+        font-family: 'DM Serif Display';
+        src: url('/fonts/DMSerifDisplay-Regular.ttf') format('ttf');
         font-weight: 400;
         font-style: normal;
+        font-display: block;
+      }
+      @font-face {
+        font-family: 'DM Serif Display';
+        src: url('/fonts/DMSerifDisplay-Italic.ttf') format('ttf');
+        font-weight: 400;
+        font-style: italic;
         font-display: block;
       }
 
       body {
         color: var(--foreground);
         background-color: var(--background);
-        font-family: 'Redaction 20', Georgia, 'Times New Roman', Times, serif;
+        font-family: 'DM Serif Display', Georgia, 'Times New Roman', Times, serif;
       }
     </style>
   </body>
