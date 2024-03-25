@@ -4,7 +4,7 @@ import webmanifest from 'astro-webmanifest'
 import getHomeDocument from './src/utils/getHomeDocument.ts'
 
 export default defineConfig({
-  site: 'https://photo.vitordino.com',
+  site: 'https://photo.dlbn.co',
   trailingSlash: 'ignore',
   integrations: [
     {
