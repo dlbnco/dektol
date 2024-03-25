@@ -17,7 +17,7 @@ const images = data.body
   <div class='home-item-title'>{data.title || uid} <slot /></div>
 </a>
 <script>
-  const HOME_ITEM_INTERVAL = 250
+  const HOME_ITEM_INTERVAL = 1000
 
   const focusIfHTML = ({ target }: Event) => {
     if (target instanceof HTMLElement) target.scrollIntoView(false)
@@ -115,7 +115,6 @@ const images = data.body
 
   .home-item-title {
     position: relative;
-    mix-blend-mode: difference;
   }
 
   @media (min-width: 720px) {
