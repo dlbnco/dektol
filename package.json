@@ -20,6 +20,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@astrojs/vercel": "^7.6.0",
     "@astrolib/seo": "^0.2.1",
     "@prismicio/client": "^6.7.1",
     "@prismicio/helpers": "^2.3.5",
@@ -35,7 +36,7 @@
     "@tsconfig/node14": "^1.0.1",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
-    "astro": "^1.4.2",
+    "astro": "^4.2.0",
     "astro-webmanifest": "^0.4.1",
     "commitlint-config-gitmoji": "^2.2.6",
     "concurrently": "^7.5.0",
