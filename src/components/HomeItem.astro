@@ -1,9 +1,10 @@
 ---
 import type { PageDocument } from '~/prismic.generated'
 import Image from '~/components/Image.astro'
+import { asHTML } from '@prismicio/helpers'
 export type Props = PageDocument
 const { uid, data } = Astro.props as Props
-
+console.log('data.description', data.description)
 const images = data.body
   .flatMap(({ items }) => items)
   .map(({ image }) => image)
@@ -12,9 +13,14 @@ const images = data.body
 
 <a class='home-item' href={`/${uid}`}>
   <div class='home-item-images'>
-    {images.map(image => <Image {...image} />)}
+    <Image {...images[0]} />
   </div>
   <div class='home-item-title'>{data.title || uid} <slot /></div>
+  {
+    data.description?.length > 0 && (
+      <div class='home-item-description' set:html={asHTML(data.description)} />
+    )
+  }
 </a>
 <script>
   const HOME_ITEM_INTERVAL = 1000
@@ -84,7 +90,7 @@ const images = data.body
   }
 
   .home-item-images {
-    opacity: 0;
+    opacity: 0.25;
   }
 
   .home-items:not(:focus-within) .home-item:hover .home-item-images,
@@ -98,7 +104,7 @@ const images = data.body
     left: 0;
     right: 0;
     bottom: 1px;
-    opacity: 0;
+    opacity: 0.25;
   }
 
   .home-item-images .image-wrapper .image-wrapper-inner,
@@ -113,8 +119,15 @@ const images = data.body
     opacity: 1;
   }
 
-  .home-item-title {
+  .home-item-title,
+  .home-item-description {
     position: relative;
+    mix-blend-mode: difference;
+  }
+
+  .home-item-description {
+    font-size: 16px;
+    margin-top: 8px;
   }
 
   @media (min-width: 720px) {
