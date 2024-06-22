@@ -24,6 +24,13 @@
         "label": "foreground"
       }
     },
+    "description": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph,strong,em,hyperlink",
+        "label": "description"
+      }
+    },
     "body": {
       "type": "Slices",
       "fieldset": "Slice zone",
@@ -83,7 +90,10 @@
               "container_size": {
                 "type": "Select",
                 "config": {
-                  "options": ["large", "medium"],
+                  "options": [
+                    "large",
+                    "medium"
+                  ],
                   "default_value": "large",
                   "label": "container size"
                 }
