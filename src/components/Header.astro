@@ -52,12 +52,6 @@ const headerLinks = homeData?.header_links
 </header>
 
 <style is:global>
-  @keyframes header-logo-home-image-rotate {
-    to {
-      transform: rotate(-72deg);
-    }
-  }
-
   .header {
     position: fixed;
     display: flex;
@@ -81,9 +75,9 @@ const headerLinks = homeData?.header_links
 
   .header-logo {
     padding: 20px;
-    color: currentColor;
     pointer-events: auto;
     outline: none;
+    filter: invert(100%);
     &:focus-visible {
       box-shadow: 0 0 0 1px currentColor;
     }
@@ -94,9 +88,9 @@ const headerLinks = homeData?.header_links
     height: 24px;
   }
 
-  .header-logo-home:hover .header-logo-image,
-  .header-logo-home:focus .header-logo-image {
-    animation: 0.25s header-logo-home-image-rotate forwards;
+  .header-logo-image svg {
+    width: 100%;
+    height: 100%;
   }
 
   .header-title {
