@@ -1,8 +1,7 @@
 {
-  //"extends": "astro/tsconfigs/base",
+  "extends": "astro/tsconfigs/base",
   "types": ["astro/client"],
   "compilerOptions": {
-    "moduleResolution": "nodenext",
     "baseUrl": ".",
     "strict": true,
     "importsNotUsedAsValues": "error",
