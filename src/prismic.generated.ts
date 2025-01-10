@@ -431,6 +431,37 @@ export interface PageDocumentDataBodyHorizontalSliceItem {
      *
      */
     image: prismicT.ImageField<null>;
+    /**
+     * shop-image field in *page → Slice Zone (`body`) → Horizontal → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: page.body[].horizontal.items[].shop_image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    shop_image: prismicT.ImageField<null>;
+    /**
+     * Printable? field in *page → Slice Zone (`body`) → Horizontal → Items*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: page.body[].horizontal.items[].printable
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    printable: prismicT.BooleanField;
+    /**
+     * Price ID (Stripe) field in *page → Slice Zone (`body`) → Horizontal → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: page.body[].horizontal.items[].price_id_stripe
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    price_id_stripe: prismicT.KeyTextField;
 }
 export type PageDocumentDataBodyHorizontalSlice = prismicT.Slice<"horizontal", Simplify<PageDocumentDataBodyHorizontalSlicePrimary>, Simplify<PageDocumentDataBodyHorizontalSliceItem>>;
 /**

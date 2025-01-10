@@ -1,10 +1,11 @@
 ---
 import type { ImageFieldImage } from '@prismicio/types'
 import getBase64FromImageUrl from '~/utils/getBase64FromImageUrl'
+import Stripe, { getStripePaymentLink } from '~/stripe'
 
-export type Props = ImageFieldImage
+export type Props = ImageFieldImage & { printable?: boolean; price_id_stripe?: string }
 const props = Astro.props as Props
-const { url, dimensions } = props
+const { url, dimensions, printable, price_id_stripe } = props
 const ratio = dimensions ? dimensions.width / dimensions.height : 1
 
 const getFormat = (ratio: number) => {
@@ -53,11 +54,22 @@ const photoMeta = getPhotoMetaArray(filename)
 const alt = props.alt || hasValidPhotoMeta ? photoMeta.join('\n') : ''
 
 const blurHash = await getBase64FromImageUrl(`${url}&h=16`)
+const printUrl =
+  printable === true && price_id_stripe != null
+    ? await getStripePaymentLink(price_id_stripe)
+    : undefined
 ---
 
 <div class='image-wrapper' data-format={getFormat(ratio)}>
   <div class='image-wrapper-inner' data-map='item'>
     {blurHash && <img class='image-blurhash' src={blurHash} aria-hidden='true' />}
+    {
+      printUrl != null && (
+        <a href={printUrl?.url} target='_blank' class='image-label print-anchor'>
+          <div>available on print →</div>
+        </a>
+      )
+    }
     <img
       class='image-main'
       src={src}
@@ -102,6 +114,18 @@ const blurHash = await getBase64FromImageUrl(`${url}&h=16`)
 
   .image-main img {
     pointer-events: auto;
+  }
+
+  .image-label {
+    opacity: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 1rem;
+    transition: 0.25s;
   }
 
   html[data-js='true'] .image-main[data-loaded='false'] {

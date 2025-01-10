@@ -65,6 +65,27 @@
                   "thumbnails": [],
                   "label": "image"
                 }
+              },
+              "shop_image": {
+                "type": "Image",
+                "config": {
+                  "constraint": {},
+                  "thumbnails": [],
+                  "label": "shop-image"
+                }
+              },
+              "printable": {
+                "type": "Boolean",
+                "config": {
+                  "default_value": false,
+                  "label": "Printable?"
+                }
+              },
+              "price_id_stripe": {
+                "type": "Text",
+                "config": {
+                  "label": "Price ID (Stripe)"
+                }
               }
             }
           },

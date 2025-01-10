@@ -15,7 +15,11 @@ const { items, primary } = props
   renderBackground={true}
 >
   <HorizontalScroll map>
-    {items.map(({ image }) => (image ? <Image {...image} /> : null))}
+    {
+      items.map(({ image, shop_image, price_id_stripe, printable }) =>
+        image ? <Image {...image} price_id_stripe={price_id_stripe} printable={printable} /> : null,
+      )
+    }
   </HorizontalScroll>
 </Section>
 
@@ -75,6 +79,14 @@ const { items, primary } = props
       top: 64px;
       bottom: 64px;
       height: calc(100vh - 128px);
+    }
+
+    .horizontal-slice .image-label {
+      bottom: 64px;
+    }
+
+    .horizontal-slice .image-asterisk {
+      bottom: calc(1rem + 64px);
     }
 
     .horizontal-slice .image-main {
