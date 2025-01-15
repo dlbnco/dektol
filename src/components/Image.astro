@@ -63,13 +63,6 @@ const printUrl =
 <div class='image-wrapper' data-format={getFormat(ratio)}>
   <div class='image-wrapper-inner' data-map='item'>
     {blurHash && <img class='image-blurhash' src={blurHash} aria-hidden='true' />}
-    {
-      printUrl != null && (
-        <a href={printUrl?.url} target='_blank' class='image-label print-anchor'>
-          <div>available on print →</div>
-        </a>
-      )
-    }
     <img
       class='image-main'
       src={src}
@@ -81,6 +74,13 @@ const printUrl =
       {...dimensions}
       onload='handleImageLoad(this)'
     />
+    {
+      printUrl != null && (
+        <a href={printUrl?.url} target='_blank' class='image-label'>
+          available on print →
+        </a>
+      )
+    }
   </div>
 </div>
 
@@ -117,11 +117,11 @@ const printUrl =
   }
 
   .image-label {
-    opacity: 1;
+    display: none;
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
+    right: 0;
     background: rgba(0, 0, 0, 0.2);
     z-index: 1;
     padding: 1rem;
@@ -138,5 +138,8 @@ const printUrl =
 
   html[data-js='true'] .image-main[data-loaded='true'] ~ .image-blurhash {
     display: none;
+  }
+  html[data-js='true'] .image-main[data-loaded='true'] + .image-label {
+    display: block;
   }
 </style>
