@@ -3,9 +3,13 @@ import type { ImageFieldImage } from '@prismicio/types'
 import getBase64FromImageUrl from '~/utils/getBase64FromImageUrl'
 import Stripe, { getStripePaymentLink } from '~/stripe'
 
-export type Props = ImageFieldImage & { printable?: boolean; price_id_stripe?: string }
+export type Props = ImageFieldImage & {
+  printable?: boolean
+  price_id_stripe?: string
+  hideLabel?: boolean
+}
 const props = Astro.props as Props
-const { url, dimensions, printable, price_id_stripe } = props
+const { url, dimensions, printable, price_id_stripe, hideLabel } = props
 const ratio = dimensions ? dimensions.width / dimensions.height : 1
 
 const getFormat = (ratio: number) => {
@@ -75,7 +79,7 @@ const printUrl =
       onload='handleImageLoad(this)'
     />
     {
-      printUrl != null && (
+      printUrl != null && hideLabel !== true && (
         <a href={printUrl?.url} target='_blank' class='image-label'>
           available on print →
         </a>

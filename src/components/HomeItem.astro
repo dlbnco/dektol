@@ -13,7 +13,7 @@ const images = data.body
 
 <a class='home-item' href={`/${uid}`}>
   <div class='home-item-images'>
-    <Image {...images[0]} />
+    <Image {...images[0]} hideLabel={true} />
   </div>
   <div class='home-item-title'>{data.title || uid} <slot /></div>
   {
